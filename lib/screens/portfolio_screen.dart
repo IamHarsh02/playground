@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:playground/screens/windows.dart';
 import 'dashboard_screen.dart';
 import 'projects_screen.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -300,7 +301,7 @@ class _PortfolioScreenState extends State<PortfolioScreen>
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => const GameStoreDashboard(),
+                        builder: (context) => const WindowsScreen(),
                       ),
                     );
                   },
@@ -1419,11 +1420,11 @@ class _PortfolioScreenState extends State<PortfolioScreen>
                 ),
               ),
               Text(
-                '. Designed by ',
+                '. Developed in ',
                 style: TextStyle(color: Colors.white24, fontSize: 14),
               ),
               Text(
-                'Flutter',
+                'Flutter web ',
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 14,
@@ -1434,21 +1435,7 @@ class _PortfolioScreenState extends State<PortfolioScreen>
             ],
           ),
           const SizedBox(height: 10),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: const [
-              Text(
-                'Built using ',
-                style: TextStyle(color: Colors.white24, fontSize: 14),
-              ),
-              Icon(Icons.flutter_dash, color: Colors.blue, size: 16),
-              Text(
-                ' with ',
-                style: TextStyle(color: Colors.white24, fontSize: 14),
-              ),
-              Icon(Icons.favorite, color: Colors.red, size: 16),
-            ],
-          ),
+
         ],
       ),
     );

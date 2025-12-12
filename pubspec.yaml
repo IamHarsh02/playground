@@ -37,6 +37,7 @@ dependencies:
   
   # Flame Game Engine
   flame: ^1.18.0
+  flutter_svg: ^2.0.0
 
 
   # Open external links

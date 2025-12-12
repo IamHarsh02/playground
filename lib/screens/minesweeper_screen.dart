@@ -194,82 +194,93 @@ class _MinesweeperScreenState extends State<MinesweeperScreen> {
   Widget build(BuildContext context) {
     final remainingMines = totalMines - flagsPlaced;
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: const Color(0xFF111827),
-        title: const Text('Minesweeper'),
-        actions: [
-          // Difficulty selector
-          PopupMenuButton<Difficulty>(
-            tooltip: 'Difficulty',
-            initialValue: difficulty,
-            onSelected: (d) {
-              setState(() {
-                difficulty = d;
-                _applyDifficulty();
-                _reset();
-              });
-            },
-            itemBuilder:
-                (context) => const [
-                  PopupMenuItem(
-                    value: Difficulty.beginner,
-                    child: Text('Beginner 9x9 / 10 mines'),
-                  ),
-                  PopupMenuItem(
-                    value: Difficulty.intermediate,
-                    child: Text('Intermediate 16x16 / 40 mines'),
-                  ),
-                  PopupMenuItem(
-                    value: Difficulty.expert,
-                    child: Text('Expert 16x30 / 99 mines'),
-                  ),
-                  PopupMenuItem(
-                    value: Difficulty.insane,
-                    child: Text('Insane 24x30 / 180 mines'),
-                  ),
-                ],
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 8.0),
-              child: Center(
-                child: Text(
-                  difficulty.name[0].toUpperCase() +
-                      difficulty.name.substring(1),
-                  style: const TextStyle(fontSize: 14),
-                ),
-              ),
-            ),
-          ),
-          IconButton(onPressed: _reset, icon: const Icon(Icons.refresh)),
-        ],
-      ),
-      backgroundColor: const Color(0xFF0A0A0A),
+      // appBar: AppBar(
+      //   backgroundColor: const Color(0xFF111827),
+      //   title: const Text('Minesweeper'),
+      //   actions: [
+      //     // Difficulty selector
+      //     PopupMenuButton<Difficulty>(
+      //       tooltip: 'Difficulty',
+      //       initialValue: difficulty,
+      //       onSelected: (d) {
+      //         setState(() {
+      //           difficulty = d;
+      //           _applyDifficulty();
+      //           _reset();
+      //         });
+      //       },
+      //       itemBuilder:
+      //           (context) => const [
+      //             PopupMenuItem(
+      //               value: Difficulty.beginner,
+      //               child: Text('Beginner 9x9 / 10 mines'),
+      //             ),
+      //             PopupMenuItem(
+      //               value: Difficulty.intermediate,
+      //               child: Text('Intermediate 16x16 / 40 mines'),
+      //             ),
+      //             PopupMenuItem(
+      //               value: Difficulty.expert,
+      //               child: Text('Expert 16x30 / 99 mines'),
+      //             ),
+      //             PopupMenuItem(
+      //               value: Difficulty.insane,
+      //               child: Text('Insane 24x30 / 180 mines'),
+      //             ),
+      //           ],
+      //       child: Padding(
+      //         padding: const EdgeInsets.symmetric(horizontal: 8.0),
+      //         child: Center(
+      //           child: Text(
+      //             difficulty.name[0].toUpperCase() +
+      //                 difficulty.name.substring(1),
+      //             style: const TextStyle(fontSize: 14),
+      //           ),
+      //         ),
+      //       ),
+      //     ),
+      //     IconButton(onPressed: _reset, icon: const Icon(Icons.refresh)),
+      //   ],
+      // ),
+       backgroundColor:  Colors.grey,
       body: Center(
         child: Column(
           children: [
             const SizedBox(height: 16),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                _counterTile(
-                  label: 'Mines',
-                  value: remainingMines.toString().padLeft(3, '0'),
-                ),
-                const SizedBox(width: 20),
-                GestureDetector(
-                  onTap: _reset,
-                  child: CircleAvatar(
-                    backgroundColor: Colors.white24,
-                    child: Icon(
-                      isGameOver
-                          ? Icons.sentiment_very_dissatisfied
-                          : isWin
-                          ? Icons.sentiment_very_satisfied
-                          : Icons.sentiment_satisfied_alt,
-                      color: Colors.yellow,
+            Container(
+              padding: EdgeInsets.all(5.0),
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.all(Radius.circular(3.0)),border: Border.all(color: Colors.grey.shade700) ),
+
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  _counterTile(
+                    label: 'Mines',
+                    value: remainingMines.toString().padLeft(3, '0'),
+                  ),
+                  const SizedBox(width: 20),
+                  GestureDetector(
+                    onTap: _reset,
+                    child: CircleAvatar(
+                      backgroundColor: Colors.white24,
+                      child: Icon(
+                        isGameOver
+                            ? Icons.sentiment_very_dissatisfied
+                            : isWin
+                            ? Icons.sentiment_very_satisfied
+                            : Icons.sentiment_satisfied_alt,
+                        color: Colors.yellow,
+                      ),
                     ),
                   ),
-                ),
-              ],
+                  const SizedBox(width: 20,),
+                  _counterTile(
+                    label: 'Score',
+                    value: '000',
+                  ),
+                ],
+              ),
             ),
             const SizedBox(height: 16),
             LayoutBuilder(
@@ -330,22 +341,22 @@ class _MinesweeperScreenState extends State<MinesweeperScreen> {
                 );
               },
             ),
-            const SizedBox(height: 12),
-            if (isGameOver)
-              const Text(
-                'Game Over',
-                style: TextStyle(color: Colors.redAccent, fontSize: 18),
-              ),
-            if (isWin)
-              const Text(
-                'You Win!',
-                style: TextStyle(color: Colors.greenAccent, fontSize: 18),
-              ),
-            const SizedBox(height: 12),
-            const Text(
-              'Tip: Long-press to flag a mine',
-              style: TextStyle(color: Colors.white60),
-            ),
+            // const SizedBox(height: 12),
+            // if (isGameOver)
+            //   const Text(
+            //     'Game Over',
+            //     style: TextStyle(color: Colors.redAccent, fontSize: 18),
+            //   ),
+            // if (isWin)
+            //   const Text(
+            //     'You Win!',
+            //     style: TextStyle(color: Colors.greenAccent, fontSize: 18),
+            //   ),
+            // const SizedBox(height: 12),
+            // const Text(
+            //   'Tip: Long-press to flag a mine',
+            //   style: TextStyle(color: Colors.white60),
+            // ),
           ],
         ),
       ),
