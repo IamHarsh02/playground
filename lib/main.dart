@@ -11,6 +11,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+
       title: 'Harsh Patare - Portfolio',
       theme: ThemeData.dark().copyWith(
         primaryColor: const Color(0xFF4F46E5),
