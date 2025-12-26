@@ -2654,6 +2654,7 @@ class _ProjectCard extends StatelessWidget {
                                     onTap: () async {
                                       final uri = Uri.parse(project.githubUrl!);
                                       await launchUrl(
+
                                         uri,
                                         mode: LaunchMode.externalApplication,
                                       );
