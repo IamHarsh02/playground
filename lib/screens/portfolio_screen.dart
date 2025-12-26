@@ -638,6 +638,16 @@ class _PortfolioScreenState extends State<PortfolioScreen>
   Widget _buildWorksSection() {
     final projects = [
       Project(
+        title: 'Promptbook',
+        description:
+        "Browse AI-generated images and explore the exact prompts behind them.",
+        badge: 'Top Rated',
+        colorA: const Color(0xFF0EA5E9),
+        colorB: const Color(0xFF06B6D4),
+        imageAsset: 'assets/images/promptbook.png',
+        githubUrl: 'https://play.google.com/store/apps/details?id=com.promptbook.app&pcampaignid=web_share',
+      ),
+      Project(
         title: 'Flutter web old game store',
         description:
             'A web-friendly Flutter game store dashboard with game details and Flame mini-games.',
@@ -697,16 +707,7 @@ class _PortfolioScreenState extends State<PortfolioScreen>
         imageAsset: 'assets/images/focus_garden.png',
         githubUrl: '',
       ),
-      Project(
-        title: 'Promptbook',
-        description:
-        "Browse AI-generated images and explore the exact prompts behind them.",
-        badge: 'Top Rated',
-        colorA: const Color(0xFF0EA5E9),
-        colorB: const Color(0xFF06B6D4),
-        imageAsset: 'assets/images/promptbook.png',
-        githubUrl: '',
-      ),
+
 
 
     ];
@@ -2649,7 +2650,7 @@ class _ProjectCard extends StatelessWidget {
                               if (project.githubUrl != null)
                                 Expanded(
                                   child: _ProjectButton(
-                                    label: 'Github',
+                                    label: project.title.toLowerCase().contains("promptbook")?"App Link": 'Github',
                                     onTap: () async {
                                       final uri = Uri.parse(project.githubUrl!);
                                       await launchUrl(
@@ -2782,7 +2783,7 @@ class _ProjectCard extends StatelessWidget {
                               children: [
                                 if (project.githubUrl != null)
                                   _ProjectButton(
-                                    label: 'Github',
+                                    label: project.title.toLowerCase().contains("promptbook")?"App Link": 'Github',
                                     onTap: () async {
                                       final uri = Uri.parse(project.githubUrl!);
                                       await launchUrl(
